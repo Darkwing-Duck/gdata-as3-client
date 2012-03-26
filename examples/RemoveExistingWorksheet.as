@@ -117,7 +117,7 @@ package
             // get specific worksheet by title 'Worksheet1'
             var worksheet:IEntry = worksheetFeed.getEntry("Worksheet1");
             
-            // remove the worksheet
+            // remove the worksheet with API
             WorksheetEntry(worksheet).addEventListener(SuccessEntryEvent.ON_SUCCESSFUL_DELETE, onWorksheetSuccessfulDeleted);
             WorksheetEntry(worksheet).addEventListener(ServiceErrorEvent.ON_ERROR_ENTRY, onWorksheetDeleteError);
             WorksheetEntry(worksheet).remove();
