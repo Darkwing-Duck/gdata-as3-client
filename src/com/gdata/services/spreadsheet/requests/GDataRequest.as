@@ -157,7 +157,6 @@ package com.gdata.services.spreadsheet.requests
          */  
         protected function onIOError(event:IOErrorEvent):void
         {
-            trace(event.currentTarget.data);
             dispatchEvent(event);
         }
         
@@ -167,7 +166,6 @@ package com.gdata.services.spreadsheet.requests
          */ 
         protected function onHTTPStatus(event:HTTPStatusEvent):void
         {
-            trace(event.status);
             dispatchEvent(event);
         }
 

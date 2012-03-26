@@ -1,16 +1,21 @@
-package com.gdata.services.spreadsheet.feeds.row
+package
 {
-    import com.gdata.services.spreadsheet.SpreadsheetNamespaces;
-    import com.gdata.services.spreadsheet.entries.row.RowEntry;
-    import com.gdata.services.spreadsheet.feeds.Feed;
-
+    import com.gdata.services.spreadsheet.SpreadsheetService;
+    import com.gdata.services.spreadsheet.authorization.AuthorizationParams;
+    import com.gdata.services.spreadsheet.events.ServiceErrorEvent;
+    import com.gdata.services.spreadsheet.events.login.SuccessLoginEvent;
+    import com.gdata.services.spreadsheet.feeds.IFeed;
+    
+    import flash.display.Sprite;
+    
     /**
-     * ...<br>
+     * Example #1.
+     * Try to login.
      * 
-     * @history create Mar 25, 2012 2:41:58 PM<br>
+     * @history create Mar 26, 2012 10:47:21 PM<br>
      * @author Smirnov Sergey
      */	
-    public class RowFeed extends Feed
+    public class GettingStarted extends Sprite
     {	
         //----------------------------------------------------------------------------------------------
         //
@@ -24,15 +29,29 @@ package com.gdata.services.spreadsheet.feeds.row
         //
         //----------------------------------------------------------------------------------------------
         
+        /**
+         * Spreadsheets service instance. 
+         */        
+        private var _service:SpreadsheetService;
+        
         //----------------------------------------------------------------------------------------------
         //
         //  Constructor
         //
         //----------------------------------------------------------------------------------------------
         
-        public function RowFeed()
+        public function GettingStarted()
         {
-            super();
+            // init the service
+            _service = new SpreadsheetService();
+            
+            // init login event listeners
+            _service.addEventListener(SuccessLoginEvent.ON_SUCCESSFUL_LOGIN, onSuccessLogin);
+            _service.addEventListener(ServiceErrorEvent.ON_ERROR_LOGIN, onErrorLogin);
+            //
+            
+            // login
+            _service.login("yourEmail", "yourPassword");
         }
         
         //----------------------------------------------------------------------------------------------
@@ -40,6 +59,37 @@ package com.gdata.services.spreadsheet.feeds.row
         //  Event handlers
         //
         //----------------------------------------------------------------------------------------------
+        
+        /**
+         * Successful login handler.
+         * @param event SuccessLoginEvent
+         */        
+        protected function onSuccessLogin(event:SuccessLoginEvent):void
+        {
+            // retrieve authorization parameters
+            var authoriationParams:AuthorizationParams = event.params;
+            
+            // get user's authorization key
+            trace(authoriationParams.auth);
+            
+            // get user's email
+            trace(authoriationParams.email);
+            
+            // get user's password
+            trace(authoriationParams.passwd);
+        }
+        
+        /**
+         * Error login handler.
+         * @param event ServiceErrorEvent
+         */        
+        protected function onErrorLogin(event:ServiceErrorEvent):void
+        {
+            // get error message
+            // to see all existing error messages, 
+            //see Error codes at https://developers.google.com/accounts/docs/AuthForInstalledApps
+            trace(event.text);
+        }
         
         //----------------------------------------------------------------------------------------------
         //
@@ -52,22 +102,6 @@ package com.gdata.services.spreadsheet.feeds.row
         //  Protected Methods
         //
         //----------------------------------------------------------------------------------------------
-        
-        /**
-         * @inheritDoc
-         */  
-        override protected function init(rawFeed:XML):void
-        {
-            default xml namespace = SpreadsheetNamespaces.ans;
-            
-            var entriesInfo:XMLList = rawFeed.entry;
-            
-            for each (var entryInfo:XML in entriesInfo)
-            {
-                var entry:RowEntry = new RowEntry(entryInfo);
-                _entries.push(entry);
-            }
-        }
         
         //----------------------------------------------------------------------------------------------
         //
