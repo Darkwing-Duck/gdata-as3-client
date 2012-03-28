@@ -94,10 +94,10 @@ package
             var spreadsheetFeed:IFeed = event.currentTarget as IFeed;
             
             // get specific spreadsheet by title 'Sheet1'
-            var spreadsheet:IEntry = spreadsheetFeed.getEntry("testSlots");
+            var spreadsheet:IEntry = spreadsheetFeed.getEntry("Sheet1");
             
             // set creation parameters
-            var params:WorksheetCreationParams = new WorksheetCreationParams("Worksheet2");
+            var params:WorksheetCreationParams = new WorksheetCreationParams("Worksheet1");
             params.columnCount = 30; // by default == 20
             params.rowCount = 50; // by default == 100
             
