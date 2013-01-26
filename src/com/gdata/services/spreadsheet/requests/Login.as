@@ -131,7 +131,7 @@ package com.gdata.services.spreadsheet.requests
          */        
         override protected function onIOError(event:IOErrorEvent):void
         {
-            var errorMessage:String = event.currentTarget.data;
+            var errorMessage:String = "Authorization Error!";
             var loginEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_LOGIN, false, false, errorMessage);
             dispatchEvent(loginEvent);
         }
