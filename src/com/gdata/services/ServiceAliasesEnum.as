@@ -14,7 +14,15 @@ package com.gdata.services
         //
         //----------------------------------------------------------------------------------------------
         
+		/**
+		 * Spreadsheets Data API 
+		 */		
         public static const SPREADSHEET:String = "wise";
+		
+		/**
+		 * Documents List Data API 
+		 */		
+        public static const DOCUMENT_LIST:String = "writely";
         
         //----------------------------------------------------------------------------------------------
     }
