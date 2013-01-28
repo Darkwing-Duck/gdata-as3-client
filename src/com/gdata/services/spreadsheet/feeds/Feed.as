@@ -73,7 +73,7 @@ package com.gdata.services.spreadsheet.feeds
             var errorMessage:String = event.currentTarget.loader.data;
             destroyCommand(GDataRequest(event.currentTarget));
             
-            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_FEED, false, false, errorMessage);
+            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_FEED, null, false, false, errorMessage);
             dispatchEvent(errorEvent);
         }
         

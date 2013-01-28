@@ -5,7 +5,7 @@ package com.gdata.services.spreadsheet
     import com.gdata.services.spreadsheet.authorization.AuthorizationProxy;
     import com.gdata.services.spreadsheet.requests.GDataRequest;
     import com.gdata.services.spreadsheet.requests.IGDataRequest;
-    import com.gdata.services.spreadsheet.requests.Login;
+    import com.gdata.services.spreadsheet.requests.login.Login;
     import com.gdata.services.spreadsheet.events.ServiceErrorEvent;
     import com.gdata.services.spreadsheet.events.login.SuccessLoginEvent;
     import com.gdata.services.spreadsheet.feeds.IFeed;
@@ -58,9 +58,9 @@ package com.gdata.services.spreadsheet
         /**
          * @inheritDoc
          */ 
-        public function login(email:String, passwd:String):void
+        public function login(email:String, passwd:String, logintoken:String = null, logincaptcha:String = null):void
         {
-            var command:IGDataRequest = new Login(email, passwd, alias);
+            var command:IGDataRequest = new Login(email, passwd, alias, logintoken, logincaptcha);
             GDataRequest(command).addEventListener(SuccessLoginEvent.ON_SUCCESSFUL_LOGIN, onSuccessfulLoginEvent);
             GDataRequest(command).addEventListener(ServiceErrorEvent.ON_ERROR_LOGIN, onErrorLoginEvent);
             command.send();

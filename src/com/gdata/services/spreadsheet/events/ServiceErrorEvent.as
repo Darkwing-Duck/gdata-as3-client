@@ -26,6 +26,8 @@ package com.gdata.services.spreadsheet.events
         //  Class variables
         //
         //----------------------------------------------------------------------------------------------
+		
+		protected var _data:Object;
         
         //----------------------------------------------------------------------------------------------
         //
@@ -33,8 +35,10 @@ package com.gdata.services.spreadsheet.events
         //
         //----------------------------------------------------------------------------------------------
         
-        public function ServiceErrorEvent(type:String, bubbles:Boolean=false, cancelable:Boolean=false, text:String="", id:int=0)
+        public function ServiceErrorEvent(type:String, data:Object=null, bubbles:Boolean=false, cancelable:Boolean=false, text:String="", id:int=0)
         {
+			_data = data;
+			
             super(type, bubbles, cancelable, text, id);
         }
         
@@ -46,9 +50,9 @@ package com.gdata.services.spreadsheet.events
         
         override public function clone():Event
         {
-            return new ServiceErrorEvent(type, bubbles, cancelable, text, errorID);
+            return new ServiceErrorEvent(type, _data, bubbles, cancelable, text, errorID);
         }
-        
+
         //----------------------------------------------------------------------------------------------
         //
         //  Private Methods
@@ -72,5 +76,10 @@ package com.gdata.services.spreadsheet.events
         //  Accessors
         //
         //----------------------------------------------------------------------------------------------
+		
+		public function get data():Object
+		{
+			return _data;
+		}
     }
 }

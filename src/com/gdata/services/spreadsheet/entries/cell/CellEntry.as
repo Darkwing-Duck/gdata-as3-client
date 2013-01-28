@@ -94,7 +94,7 @@ package com.gdata.services.spreadsheet.entries.cell
             var errorMessage:String = event.currentTarget.loader.data;
             destroyUpdateCommand(event.currentTarget as IGDataRequest);
            
-            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, false, false, errorMessage);
+            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, null, false, false, errorMessage);
             dispatchEvent(errorEvent);
         }
         

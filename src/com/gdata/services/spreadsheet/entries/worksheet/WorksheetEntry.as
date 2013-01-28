@@ -105,7 +105,7 @@ package com.gdata.services.spreadsheet.entries.worksheet
             var errorMessage:String = event.currentTarget.loader.data;
             destroyRemoveCommand(event.currentTarget as IGDataRequest);
             
-            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, false, false, errorMessage);
+            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, null, false, false, errorMessage);
             dispatchEvent(errorEvent);
         }
         
@@ -129,7 +129,7 @@ package com.gdata.services.spreadsheet.entries.worksheet
             var errorMessage:String = event.currentTarget.loader.data;
             destroyRemoveCommand(event.currentTarget as IGDataRequest);
             
-            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, false, false, errorMessage);
+            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, null, false, false, errorMessage);
             dispatchEvent(errorEvent);
         }
         
@@ -156,7 +156,7 @@ package com.gdata.services.spreadsheet.entries.worksheet
             var errorMessage:String = event.currentTarget.loader.data;
             destroyInsertRowCommand(event.currentTarget as IGDataRequest);
             
-            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, false, false, errorMessage);
+            var errorEvent:ServiceErrorEvent = new ServiceErrorEvent(ServiceErrorEvent.ON_ERROR_ENTRY, null, false, false, errorMessage);
             dispatchEvent(errorEvent);
         }
         
